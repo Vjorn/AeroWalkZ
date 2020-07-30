@@ -28,7 +28,14 @@ public:
 	bool LockonButton;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	bool DodgeButton;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	int InputBuffer;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	int DirectionBuffer;
+	
 
 
 
