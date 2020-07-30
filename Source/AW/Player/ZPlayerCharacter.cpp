@@ -57,6 +57,10 @@ AZPlayerCharacter::AZPlayerCharacter()
 
 	// Character Switch
 	bActive = true;
+
+	// Character Info
+	Health = 1000.f;
+	MaxHealth = 200.f;
 }
 
 // Called when the game starts or when spawned

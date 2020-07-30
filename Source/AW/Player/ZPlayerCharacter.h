@@ -29,6 +29,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	bool DodgeButton;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	bool SpecialButton;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	int InputBuffer;
@@ -138,6 +141,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
 	bool bInvincible;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
+	float Health;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
+	float MaxHealth;
 	
 
 
