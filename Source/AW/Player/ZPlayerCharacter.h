@@ -32,6 +32,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	bool SpecialButton;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	bool MeleeButton;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	int InputBuffer;
