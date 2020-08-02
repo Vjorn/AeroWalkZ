@@ -146,10 +146,22 @@ public:
 	bool bInvincible;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
+	bool bSuperChar;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
 	float Health;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
 	float MaxHealth;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
+	float Meter;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
+	float MaxMeter;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
+	int Team;
 	
 
 
@@ -161,6 +173,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
 	bool bCollisionStop;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	float HitstopTime;
 	
 
 
@@ -190,5 +205,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void RestoreMovementDefaults(bool ZeroVelocity);
+
+	// Hit Graph
+	UFUNCTION(BlueprintCallable)
+	void AddMeter(float InMeter);
 
 };

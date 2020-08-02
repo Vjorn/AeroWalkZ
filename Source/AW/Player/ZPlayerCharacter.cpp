@@ -8,6 +8,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Math/UnrealMathUtility.h"
 
 
 
@@ -61,6 +62,10 @@ AZPlayerCharacter::AZPlayerCharacter()
 	// Character Info
 	Health = 1000.f;
 	MaxHealth = 200.f;
+	Meter = 200.f;
+	MaxMeter = 1000.f;
+	Team = 0;
+	bSuperChar = false;
 }
 
 // Called when the game starts or when spawned
@@ -110,4 +115,20 @@ void AZPlayerCharacter::RestoreMovementDefaults(bool ZeroVelocity)
 		GetCharacterMovement()->FallingLateralFriction = TargetAirFriction;
 		FloatTime = 0.f;
 	}
+}
+
+void AZPlayerCharacter::AddMeter(float InMeter)
+{
+	float A;
+	float B;
+
+	if (bSuperChar) {
+		A = FMath::Clamp(InMeter, 0.f, MaxMeter);
+	} 
+	else {
+		A = InMeter;
+	}
+
+	B = Meter + A;
+	Meter = FMath::Clamp(B, 0.f, MaxMeter);
 }
