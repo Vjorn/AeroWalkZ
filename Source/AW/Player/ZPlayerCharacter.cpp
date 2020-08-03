@@ -9,6 +9,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Math/UnrealMathUtility.h"
+#include "Kismet/GameplayStatics.h"
 
 
 
@@ -64,8 +65,12 @@ AZPlayerCharacter::AZPlayerCharacter()
 	MaxHealth = 200.f;
 	Meter = 200.f;
 	MaxMeter = 1000.f;
+	CharacterPlayRate = 1.f;
 	Team = 0;
 	bSuperChar = false;
+
+	// Collision
+	HitstopTime = 0.f;
 }
 
 // Called when the game starts or when spawned
@@ -131,4 +136,22 @@ void AZPlayerCharacter::AddMeter(float InMeter)
 
 	B = Meter + A;
 	Meter = FMath::Clamp(B, 0.f, MaxMeter);
+}
+
+void AZPlayerCharacter::TickHitstop()
+{
+	if (HitstopTime > 0.f) {
+		HitstopTime = FMath::Clamp(HitstopTime - UGameplayStatics::GetWorldDeltaSeconds(this), 0.f, HitstopTime);
+		if (HitstopTime == 0.f) {
+			CustomTimeDilation = CharacterPlayRate;
+		}
+		else {
+			CustomTimeDilation = 0.f;
+		}
+	}
+	else {
+		if (CharacterPlayRate != CustomTimeDilation) {
+			CustomTimeDilation = CharacterPlayRate;
+		}
+	}
 }

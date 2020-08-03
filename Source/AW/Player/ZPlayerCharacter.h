@@ -161,6 +161,9 @@ public:
 	float MaxMeter;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
+	float CharacterPlayRate;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Info")
 	int Team;
 	
 
@@ -176,7 +179,16 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
 	float HitstopTime;
-	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	bool EnemyOverlapping;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FVector PreviousFrameLocation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FVector PreviousFrameVelocity;
+		
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Switch")
@@ -193,6 +205,10 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+	void TickHitstop();
+
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
